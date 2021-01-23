@@ -18,7 +18,7 @@
 	input = null
 
 /obj/item/ttsdevice/AltClick(mob/living/user)
-	var/noisechoice = input(user, "What noise would you like to make?", "Robot Noises") as null|anything in list("Beep","Buzz","Ping")
+	var/noisechoice = tgui_input_list(user, "What noise would you like to make?", "Robot Noises", list("Beep","Buzz","Ping"))
 	if(noisechoice == "Beep")
 		user.visible_message("<span class='notice'>[user] has made their TTS beep!", "You make your TTS beep!</span>")
 		playsound(user, 'sound/machines/twobeep.ogg', 50, 1, -1)
