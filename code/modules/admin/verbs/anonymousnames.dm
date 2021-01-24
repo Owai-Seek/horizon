@@ -32,7 +32,7 @@
 	for(var/_theme in typesof(/datum/anonymous_theme))
 		var/datum/anonymous_theme/theme = _theme
 		input_list[initial(theme.name)] = theme
-	var/result = input(usr, "Choose an anonymous theme","going dark") as null|anything in input_list
+	var/result = tgui_input_list(usr, "Choose an anonymous theme", "going dark", input_list)
 	if(!usr || !result || result == "Cancel")
 		return
 	result = input_list[result]
