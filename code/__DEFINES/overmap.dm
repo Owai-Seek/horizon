@@ -3,6 +3,7 @@
 #define OV_CAN_BE_TARGETED (1<<1)
 #define OV_CAN_BE_SCANNED (1<<2)
 #define OV_CAN_BE_TRANSPORTED (1<<3)
+#define OV_CAN_BE_ATTACKED (1<<4)
 
 //Defines for helm command types
 #define HELM_IDLE 0
@@ -39,6 +40,13 @@
 #define SHUTTLE_ICON_FORWARD 2
 #define SHUTTLE_ICON_BACKWARD 3
 
+//Projectiles
+#define OVERMAP_PROJECTILE_COLLISION_DISTANCE 5
+//Damage types
+#define OV_DAMTYPE_LASER 1
+#define OV_DAMTYPE_BALLISTIC 2
+#define OV_DAMTYPE_MINING 3
+
 #define SHUTTLE_CAN_USE_DOCK		(1<<0)
 #define SHUTTLE_CAN_USE_ENGINES		(1<<1)
 #define SHUTTLE_CAN_USE_SENSORS		(1<<2)
@@ -48,6 +56,8 @@
 #define PLANET_SHUTTLE_CAPABILITY (SHUTTLE_CAN_USE_SENSORS|SHUTTLE_CAN_USE_TARGET)
 
 //Generaton stuff
+#define ORE_ROCK_PER_TILE_CHANCE 9
+
 #define TRANSPORTABLE_LOOT_CHANCE_PER_TILE 7
 #define TRANSPORTABLE_LOOT_TABLE list(/datum/overmap_object/transportable/debris = 60, \
 									/datum/overmap_object/transportable/wreckage = 5, \
@@ -76,3 +86,29 @@
 #define OVERMAP_LAYER_LOOT 3.4
 #define OVERMAP_LAYER_SHIP 3.5
 #define OVERMAP_LAYER_SHUTTLE 3.6
+#define OVERMAP_LAYER_PROJECTILE 3.7
+
+//Helpful getters
+#define STATION_OVERMAP_OBJECT SSmapping.station_overmap_object
+#define STATION_WEATHER_CONTROLLER SSmapping.station_overmap_object.weather_controller
+
+///Due to the lack of even knowing where to put it in, I'm putting my helper defines stuff here - Azarak
+#define CHECK_AND_PICK_OR_NULL(some_list) some_list ? pick(some_list) : null
+
+//List of all the planets we can spawn roundstart, with an associated weight. Planets with less features are rarer
+#define SPAWN_PLANET_WEIGHT_LIST list(/datum/planet_template/volcanic_planet = 100, \
+					/datum/planet_template/snow_planet = 100, \
+					/datum/planet_template/shrouded_planet = 50, \
+					/datum/planet_template/lush_planet = 100, \
+					/datum/planet_template/jungle_planet = 100, \
+					/datum/planet_template/desert_planet = 100, \
+					/datum/planet_template/chlorine_planet = 50, \
+					/datum/planet_template/barren_planet = 50)
+
+//Planetary proprties for ruins to check
+#define PLANET_HABITABLE (1<<0)
+#define PLANET_WATER (1<<1)
+#define PLANET_WRECKAGES (1<<2)
+#define PLANET_VOLCANIC (1<<3)
+#define PLANET_ICE (1<<4)
+#define PLANET_REMOTE (1<<5)

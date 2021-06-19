@@ -15,12 +15,12 @@
 
 	area_type = /area
 	protect_indoors = FALSE
-	target_trait = ZTRAIT_VOIDSTORM
 
 	immunity_type = "void"
 
 	barometer_predictable = FALSE
 	perpetual = TRUE
+	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/void_storm/weather_act(mob/living/L)
 	if(IS_HERETIC(L) || IS_HERETIC_MONSTER(L))

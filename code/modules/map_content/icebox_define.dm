@@ -24,11 +24,9 @@
 						"Linkage" = null,
 						"Gravity" = TRUE,
 						"Ice Ruins" = TRUE,
-						"Weather_Snowstorm" = TRUE,
 						"Baseturf" = "/turf/open/openspace/icemoon/keep_below")
 					)
-	space_ruin_levels = 0
-	space_empty_levels = 0
+	space_ruin_levels = 2
 
 	minetype = "none"
 
@@ -43,3 +41,6 @@
 						"captain" = list("special_charter" = "moon"))
 
 	overmap_object_type = /datum/overmap_object/shuttle/planet/icebox
+	weather_controller_type = /datum/weather_controller/icebox
+	atmosphere_type = /datum/atmosphere/icemoon
+	day_night_controller_type = /datum/day_night_controller

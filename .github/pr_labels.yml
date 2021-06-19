@@ -1,0 +1,101 @@
+
+version: v1
+
+labels:
+  # Add-only Labels
+  # Area Labels
+  - label: "Area : Administration"
+    matcher:
+      body: ":cl:.*\\nadmin:.*\\/:cl:"
+  - label: "Area : Balance"
+    matcher:
+      body: ":cl:.*\\n(?:re)?balance:.*\\/:cl:"
+  - label: "Area : Configuration"
+    matcher:
+      body: ":cl:.*\\nconfig:.*\\/:cl:"
+      files:
+        any:
+          - "code/controllers/configuration/entries/**/*"
+          - "config/**/*"
+  - label: "Area : Grammar & Formatting"
+    matcher:
+      body: ":cl:.*\\n(?:spellcheck|typo):.*\\/:cl:"
+  - label: "Area : Sounds"
+    matcher:
+      body: ":cl:.*\\nsound(?:add|del):.*\\/:cl:"
+      files:
+        any:
+          - "sound/**/*"
+  - label: "Area : Sprites"
+    matcher:
+      body: ":cl:.*\\nimage(?:add|del):.*\\/:cl:"
+      files:
+        any:
+          - "icons/**/*"
+  - label: "Area : UI/UX"
+    matcher:
+      files:
+        any:
+          - "code/tgui/**/*"
+          - "code/tgui_panel/**/*"
+          - "tgui/**/*"
+  # Type Labels
+  - label: "Type : Mirror"
+    matcher:
+      branch: "^mirror/.*"
+  - label: "Type : Fix"
+    matcher:
+      title: ".*fixes.*"
+      body: ":cl:.*\\n(?:bug)?fix(?:es)?:.*\\/:cl:"
+      branch: "^fix/.*"
+  - label: "Type : Quality of Life"
+    matcher:
+      body: ":cl:.*\\nqol:.*\\/:cl:"
+  - label: "Type : Refactor"
+    matcher:
+      body: ":cl:.*\\n(?:code(?:_imp)?|refactor):.*\\/:cl:"
+  - label: "Type : Removal"
+    matcher:
+      body: ":cl:.*\\n(?:sound|image|rsc)?dels?:.*\\/:cl:"
+  # Warn Labels
+  - label: "Warn : Config Update"
+    matcher:
+      files:
+        any:
+          - "code/controllers/configuration/entries/**/*"
+          - "config/**/*"
+
+  # Synced labels
+  - label: "Area : Database"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "SQL/**/*"
+  - label: "Area : Mapping"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "_maps/**/*"
+  - label: "Area : Tools"
+    sync: true
+    matcher:
+      files:
+        any:
+          - "tools/**/*"
+          - "BUILD.bat"
+  - label: "Area : Repository"
+    sync: true
+    matcher:
+      files:
+        any:
+          - .github/**/*
+          - .vscode/**/*
+          - .dockerignore
+          - .gitignore
+          - .gitattributes
+          - .git-blame-ignore-revs
+          - .editorconfig
+          - Dockerfile
+          - README.md

@@ -33,12 +33,8 @@
 
 /mob/living/simple_animal/mouse/Initialize()
 	. = ..()
-	AddComponent(/datum/component/squeak, list('sound/effects/mousesqueek.ogg'=1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
-	if(!body_color)
-		body_color = pick( list("brown","gray","white") )
-	icon_state = "mouse_[body_color]"
-	icon_living = "mouse_[body_color]"
-	icon_dead = "mouse_[body_color]_dead"
+	AddElement(/datum/element/animal_variety, "mouse", pick("brown","gray","white"), FALSE)
+	AddComponent(/datum/component/squeak, list('sound/effects/mousesqueek.ogg' = 1), 100, extrarange = SHORT_RANGE_SOUND_EXTRARANGE) //as quiet as a mouse or whatever
 	add_cell_sample()
 
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
@@ -90,7 +86,7 @@
 		qdel(AM)
 
 /mob/living/simple_animal/mouse/handle_automated_action()
-	if(prob(chew_probability))
+	/**if(prob(chew_probability))
 		var/turf/open/floor/F = get_turf(src)
 		if(istype(F) && !F.intact)
 			var/obj/structure/cable/C = locate() in F
@@ -105,7 +101,7 @@
 				C.deconstruct()
 				if(powered)
 					playsound(src, 'sound/effects/sparks2.ogg', 100, TRUE)
-
+	**/ //Disables Mouse nombing wires because lowpop
 	for(var/obj/item/food/cheese/cheese in range(1, src))
 		if(prob(10))
 			be_fruitful()

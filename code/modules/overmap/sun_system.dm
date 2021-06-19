@@ -49,6 +49,8 @@
 	var/list/returned_list = list()
 	var/turf/located = locate(passed_x + x_offset, passed_y + y_offset, z_level)
 	for(var/obj/effect/abstract/overmap/overmap_visual in located.contents)
+		if(!overmap_visual)
+			continue
 		returned_list += overmap_visual.my_overmap_object
 	return returned_list
 
@@ -105,6 +107,8 @@
 				if(prob(TRANSPORTABLE_LOOT_CHANCE_PER_TILE))
 					var/transp_type = pickweight(transportables_loot_list)
 					new transp_type(src, iterated_x, iterated_y)
+				if(prob(ORE_ROCK_PER_TILE_CHANCE))
+					new /datum/overmap_object/ore_rock(src, iterated_x, iterated_y)
 	//Spawn hazards
 	SeedHazards()
 

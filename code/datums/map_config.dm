@@ -19,8 +19,7 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 7
-	var/space_empty_levels = 1
+	var/space_ruin_levels = 3
 
 	var/minetype = "lavaland"
 
@@ -38,7 +37,29 @@
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
 
+	/// Type of the global trading hub that will be created
+	var/global_trading_hub_type = /datum/trade_hub/worldwide
+	/// A lazylist of types of trading hubs to be spawned
+	var/localized_trading_hub_types = list(/datum/trade_hub/randomname, /datum/trade_hub/randomname)
+
+	/// The type of the overmap object the station will act as on the overmap
 	var/overmap_object_type = /datum/overmap_object/shuttle/station
+	/// The weather controller the station levels will have
+	var/weather_controller_type = /datum/weather_controller
+	/// Type of our day and night controller, can be left blank for none
+	var/day_night_controller_type
+	/// Type of the atmosphere that will be loaded on station
+	var/atmosphere_type
+	/// Possible rock colors of the loaded map
+	var/list/rock_color
+	/// Possible plant colors of the loaded map
+	var/list/plant_color
+	/// Possible grass colors of the loaded map
+	var/list/grass_color
+	/// Possible water colors of the loaded map
+	var/list/water_color
+
+	var/amount_of_planets_spawned = 1
 
 /datum/map_config/New()
 	//Make sure that all levels in station do have this z trait

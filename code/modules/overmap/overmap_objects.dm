@@ -24,6 +24,40 @@
 	/// When this object is spawned it will clear all the hazards in its current position
 	var/clears_hazards_on_spawn = FALSE
 	var/overmap_flags = OV_SHOWS_ON_SENSORS|OV_CAN_BE_TARGETED|OV_CAN_BE_SCANNED
+	/// Linked weather controller, expect this to apply to all related_levels
+	var/datum/weather_controller/weather_controller
+	/// Linked day and night controller, expect this to apply to all related_levels
+	var/datum/day_night_controller/day_night_controller
+
+/datum/overmap_object/proc/ProcessPartials()
+	var/did_move = FALSE
+	var/new_x
+	var/new_y
+	while(partial_y > 16)
+		did_move = TRUE
+		partial_y -= 32
+		new_y = min(y+1,current_system.maxy)
+	while(partial_y < -16)
+		did_move = TRUE
+		partial_y += 32
+		new_y = max(y-1,1)
+	while(partial_x > 16)
+		did_move = TRUE
+		partial_x -= 32
+		new_x = min(x+1,current_system.maxx)
+	while(partial_x < -16)
+		did_move = TRUE
+		partial_x += 32
+		new_x = max(x-1,1)
+	UpdateVisualOffsets()
+	if(did_move)
+		var/passed_x = new_x || x
+		var/passed_y = new_y || y
+		Move(passed_x, passed_y)
+	return did_move
+
+/datum/overmap_object/proc/DealtDamage(damage_type, damage_amount)
+	return
 
 /datum/overmap_object/proc/DoTransport(turf/destination)
 	return
@@ -74,6 +108,8 @@
 		current_system.CoordsClearHazard(x, y)
 
 /datum/overmap_object/Destroy()
+	if(weather_controller)
+		weather_controller.UnlinkOvermapObject()
 	//As we are destroyed we exit other objects
 	for(var/other_obj in current_system.GetObjectsOnCoords(x, y))
 		var/datum/overmap_object/other_overmap_obj = other_obj
@@ -129,5 +165,6 @@
 	return
 
 /datum/overmap_object/ruins
-	name = "Cluster of ruins"
+	name = "Cluster of Ruins"
 	visual_type = /obj/effect/abstract/overmap/ruins
+	clears_hazards_on_spawn = TRUE

@@ -6,74 +6,31 @@
 	telegraph_message = "<span class='boldwarning'>An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.</span>"
 	telegraph_duration = 300
 	telegraph_overlay = "light_ash"
+	telegraph_skyblock = 0.3
 
 	weather_message = "<span class='userdanger'><i>Smoldering clouds of scorching ash billow down around you! Get inside!</i></span>"
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"
+	weather_skyblock = 0.3
 
 	end_message = "<span class='boldannounce'>The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.</span>"
 	end_duration = 300
 	end_overlay = "light_ash"
+	end_skyblock = 0.3
 
 	area_type = /area
 	protect_indoors = TRUE
-	target_trait = ZTRAIT_ASHSTORM
 
 	immunity_type = "ash"
 
-	probability = 90
-
 	barometer_predictable = TRUE
 
-	var/datum/looping_sound/active_outside_ashstorm/sound_ao = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/active_inside_ashstorm/sound_ai = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/weak_outside_ashstorm/sound_wo = new(list(), FALSE, TRUE)
-	var/datum/looping_sound/weak_inside_ashstorm/sound_wi = new(list(), FALSE, TRUE)
-
-/datum/weather/ash_storm/telegraph()
-	. = ..()
-	var/list/inside_areas = list()
-	var/list/outside_areas = list()
-	var/list/eligible_areas = list()
-	for (var/z in impacted_z_levels)
-		eligible_areas += SSmapping.areas_in_z["[z]"]
-	for(var/i in 1 to eligible_areas.len)
-		var/area/place = eligible_areas[i]
-		if(place.outdoors)
-			outside_areas += place
-		else
-			inside_areas += place
-		CHECK_TICK
-
-	sound_ao.output_atoms = outside_areas
-	sound_ai.output_atoms = inside_areas
-	sound_wo.output_atoms = outside_areas
-	sound_wi.output_atoms = inside_areas
-
-	sound_wo.start()
-	sound_wi.start()
-
-/datum/weather/ash_storm/start()
-	. = ..()
-	sound_wo.stop()
-	sound_wi.stop()
-
-	sound_ao.start()
-	sound_ai.start()
-
-/datum/weather/ash_storm/wind_down()
-	. = ..()
-	sound_ao.stop()
-	sound_ai.stop()
-
-	sound_wo.start()
-	sound_wi.start()
-
-/datum/weather/ash_storm/end()
-	. = ..()
-	sound_wo.stop()
-	sound_wi.stop()
+	sound_active_outside = /datum/looping_sound/active_outside_ashstorm
+	sound_active_inside = /datum/looping_sound/active_inside_ashstorm
+	sound_weak_outside = /datum/looping_sound/weak_outside_ashstorm
+	sound_weak_inside = /datum/looping_sound/weak_inside_ashstorm
+	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/ash_storm/proc/is_ash_immune(atom/L)
 	while (L && !isturf(L))
@@ -109,5 +66,3 @@
 	end_sound = null
 
 	aesthetic = TRUE
-
-	probability = 10
