@@ -89,7 +89,7 @@
 	base_icon_state = "rock_floor"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/rock/Initialize()
@@ -135,8 +135,13 @@
 	base_icon_state = "dry"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/plating/planetary/dry_seafloor/Initialize()
+	. = ..()
+	if(prob(3))
+		AddComponent(/datum/component/digsite)
 
 /turf/open/floor/plating/planetary/wasteland
 	name = "cracked earth"
@@ -153,6 +158,8 @@
 	.=..()
 	if(prob(15))
 		icon_state = "[initial(icon_state)][rand(0,12)]"
+	if(prob(3))
+		AddComponent(/datum/component/digsite)
 
 /obj/structure/flora/planetary
 	name = "bush"
@@ -233,7 +240,7 @@
 	base_icon_state = "concrete"
 	footstep = FOOTSTEP_GENERIC_HEAVY
 	barefootstep = FOOTSTEP_SAND
-	clawfootstep = FOOTSTEP_GENERIC_HEAVY
+	clawfootstep = FOOTSTEP_HARD_CLAW
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /turf/open/floor/plating/planetary/concrete/reinforced
