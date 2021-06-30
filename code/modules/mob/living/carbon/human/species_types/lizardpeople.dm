@@ -2,11 +2,12 @@
 	// Reptilian humanoids with scaled skin and tails.
 	name = "Lizardperson"
 	id = "lizard"
+	flavor_text = "A generalized term used for most reptilian species. Most reptiles are unable to digest dairy, or starchy products, such as bread, potatoes, and tortillas. Cold-blooded, even the lightest jacket or change in temperature can cause them harm."
 	say_mod = "hisses"
 	default_color = "0F0"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None", "neck" = "None")
 	mutanttongue = /obj/item/organ/tongue/lizard
 	coldmod = 1.5
 	heatmod = 0.67
@@ -83,6 +84,7 @@ Lizard subspecies: ASHWALKERS
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
 	id = "ashlizard"
+	flavor_text = "A reptilian species adapted to harsher environments. They can breathe in low pressure areas, hold their breath for extended periods, and have an immunity to most viral outbreaks. Similar to normal Lizardpeople, they cannot eat grains or dairy."
 	limbs_id = "lizard"
 	species_traits = list(
 		MUTCOLORS,

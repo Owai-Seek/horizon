@@ -234,6 +234,7 @@
 
 /datum/trader/mining
 	name = "Rock'n'Drill Mining Inc"
+	current_credits = RICH_TRADER_CREDIT_AMOUNT
 	buy_margin = 1.3
 	sell_margin = 2
 	possible_origins = list("Automated Smelter AH-532", "CMV Locust", "The Galactic Foundry Company", "Crucible LLC")
@@ -279,3 +280,22 @@
 								/datum/sold_goods/lizard = 100)
 	target_sold_goods_amount = 4
 	target_bought_goods_amount = 2
+
+/datum/trader/archeology
+	name = "Artifact Shop Employee"
+	possible_origins = list("Jungle Relics", "Atlantis", "Fossilized Monsters", "Secrets of the Earth")
+	possible_bought_goods = list(
+		/datum/bought_goods/fossil = 100,
+		/datum/bought_goods/excavation_junk = 100,
+		/datum/bought_goods/excavation_artifact = 100,
+		/datum/bought_goods/anomalous_crystal = 100
+		)
+	possible_sold_goods = list(
+		/datum/sold_goods/excavation_pick_set = 100,
+		/datum/sold_goods/excavation_measuring_tape = 100,
+		/datum/sold_goods/excavation_depth_scanner = 100,
+		/datum/sold_goods/excavation_locator = 100,
+		/datum/sold_goods/anomalous_crystal = 100
+		)
+	target_sold_goods_amount = 6
+	target_bought_goods_amount = 5

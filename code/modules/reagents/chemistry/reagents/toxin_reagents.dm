@@ -84,6 +84,7 @@
 	burning_volume = 0.3//But burns fast
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+	accelerant_quality = 10
 
 /datum/reagent/toxin/plasma/on_new(data)
 	. = ..()
@@ -215,11 +216,6 @@
 	taste_description = "fish"
 	ph = 12
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-
-/datum/reagent/toxin/carpotoxin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	. = ..()
-	for(var/i in M.all_scars)
-		qdel(i)
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -427,6 +423,7 @@
 	taste_description = "burning"
 	ph = 13
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	accelerant_quality = 10
 
 /datum/reagent/toxin/spore_burning/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjust_fire_stacks(2 * REM * delta_time)
@@ -850,7 +847,8 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/toxin/coniine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	M.losebreath += 5 * REM * delta_time
+	if(M.losebreath < 5)
+		M.losebreath = min(M.losebreath + 5 * REM * delta_time, 5)
 	return ..()
 
 /datum/reagent/toxin/spewium

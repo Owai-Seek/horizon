@@ -1,11 +1,12 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = "mammal"
+	flavor_text = "A term encompassing most humanoids with animal-like qualities."
 	default_color = "4B4B4B"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
-	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "wings" = "None")
+	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "horns" = "None", "ears" = ACC_RANDOM, "legs" = ACC_RANDOM, "taur" = "None", "wings" = "None", "neck" = "None")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'

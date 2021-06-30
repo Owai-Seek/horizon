@@ -2,6 +2,11 @@
 	icon_state = "mining"
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
+	always_unpowered = TRUE
+	requires_power = TRUE
+	power_environ = FALSE
+	power_equip = FALSE
+	power_light = FALSE
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED | MEGAFAUNA_SPAWN_ALLOWED | NO_ALERTS
 	ambience_index = AMBIENCE_AWAY
 	outdoors = TRUE
@@ -15,7 +20,11 @@
 /turf/open/floor/plating/planetary
 	icon = 'icons/planet/planet_floors.dmi'
 	initial_gas_mix = PLANETARY_ATMOS
+	planetary_atmos = TRUE
 	tiled_dirt = FALSE
+
+/turf/open/floor/plating/planetary/setup_broken_states()
+	return list(base_icon_state)
 
 /turf/open/floor/plating/planetary/water
 	gender = PLURAL

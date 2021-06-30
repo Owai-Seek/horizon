@@ -1,6 +1,7 @@
 /datum/species/moth
 	name = "Mothman"
 	id = "moth"
+	flavor_text = "An insectoid race known for their mothlike appearance, and love of light. They love to eat veggies, dairy, and cloth, but hate fruits. Meats and raw food are outright toxic to them."
 	say_mod = "flutters"
 	default_color = "00FF00"
 	species_traits = list(
@@ -12,7 +13,7 @@
 		MUTCOLORS,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	default_mutant_bodyparts = list("wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM)
+	default_mutant_bodyparts = list("wings" = ACC_RANDOM, "moth_antennae" = ACC_RANDOM, "neck" = ACC_RANDOM)
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'

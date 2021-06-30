@@ -3,7 +3,7 @@
 	desc = "Used to control the White Ship."
 	circuit = /obj/item/circuitboard/computer/white_ship
 	shuttleId = "whiteship"
-	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom"
+	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom;hugedock;largedock"
 
 /// Console used on the whiteship bridge. Comes with GPS pre-baked.
 /obj/machinery/computer/shuttle/white_ship/bridge
@@ -64,3 +64,14 @@
 	loot = list(/obj/vehicle/sealed/mecha/working/ripley/mining = 1,
 				/obj/structure/mecha_wreckage/ripley = 5)
 	lootdoubles = FALSE
+
+/obj/machinery/computer/shuttle/barrow
+	name = "The Barrows Ship Console"
+	desc = "Used to control The Barrows."
+	circuit = /obj/item/circuitboard/computer/barrow
+	shuttleId = "whiteship_the_barrows"
+	
+/obj/item/circuitboard/computer/barrow
+	name = "The Barrows Ship Console (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_GENERIC
+	build_path = /obj/machinery/computer/shuttle/barrow
