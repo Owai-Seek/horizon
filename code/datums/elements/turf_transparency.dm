@@ -1,4 +1,6 @@
+
 /datum/element/turf_z_transparency
+	element_flags = ELEMENT_DETACH
 	var/show_bottom_level = FALSE
 
 ///This proc sets up the signals to handle updating viscontents when turfs above/below update. Handle plane and layer here too so that they don't cover other obs/turfs in Dream Maker
@@ -20,13 +22,13 @@
 
 	ADD_TRAIT(our_turf, TURF_Z_TRANSPARENT_TRAIT, TURF_TRAIT)
 
-
 	update_multiz(our_turf, TRUE, TRUE)
 
 /datum/element/turf_z_transparency/Detach(datum/source)
 	. = ..()
 	var/turf/our_turf = source
 	our_turf.vis_contents.len = 0
+	UnregisterSignal(our_turf, list(COMSIG_TURF_MULTIZ_NEW, COMSIG_TURF_MULTIZ_DEL, COMSIG_TURF_UPDATE_TRANSPARENCY))
 	REMOVE_TRAIT(our_turf, TURF_Z_TRANSPARENT_TRAIT, TURF_TRAIT)
 
 ///Updates the viscontents or underlays below this tile.
@@ -55,16 +57,20 @@
 		our_turf.underlays += plating_underlay
 	return TRUE
 
-/datum/element/turf_z_transparency/proc/on_multiz_turf_del(turf/our_turf, turf/T, dir)
+/datum/element/turf_z_transparency/proc/on_multiz_turf_del(turf/our_turf, turf/below_turf, dir)
 	SIGNAL_HANDLER
+
 	if(dir != DOWN)
 		return
+
 	update_multiz(our_turf)
 
-/datum/element/turf_z_transparency/proc/on_multiz_turf_new(turf/our_turf, turf/T, dir)
+/datum/element/turf_z_transparency/proc/on_multiz_turf_new(turf/our_turf, turf/below_turf, dir)
 	SIGNAL_HANDLER
+
 	if(dir != DOWN)
 		return
+
 	update_multiz(our_turf)
 
 ///Called when there is no real turf below this turf

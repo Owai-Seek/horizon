@@ -47,6 +47,7 @@
 #define WIRE_BRIDGE_LAYER 2.44
 #define WIRE_TERMINAL_LAYER 2.45
 #define GAS_SCRUBBER_LAYER 2.46
+#define CATWALK_LAYER 2.465
 #define GAS_PIPE_VISIBLE_LAYER 2.47 //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
 #define GAS_FILTER_LAYER 2.48
 #define GAS_PUMP_LAYER 2.49
@@ -112,7 +113,7 @@
 #define FRILL_MASK_RENDER_TARGET "*FRILL_MASK_PLANE"
 
 //---------- LIGHTING -------------
-///Normal 1 per turf dynamic lighting objects
+///Normal 1 per turf dynamic lighting underlays
 #define LIGHTING_PLANE 100
 #define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
 
