@@ -132,8 +132,178 @@
   Azarak:
   - rscadd: Adds Rubble, explosions make rubble
   - bugfix: Fixes outdoors planetary areas having power
+  - qol: small lights no longer will be delayed or play a sound
+  - bugfix: fixed lighting desynchronisation that could be achieved by switching fire
+      alarm and light switch fast
+  - bugfix: coloring a light no longer will cause the update to be delayed
+  - rscadd: Triples rubble integrity
   - bugfix: Moved safe's item insertion to LateInitialize to support spawners
   - rscadd: Lighting transitions to indoors areas from day/night
   - bugfix: Fixes weather effect sprite loops
   CypressBz:
   - rscadd: Added a new Ruin!
+2021-07-02:
+  Azarak:
+  - bugfix: Refactored planetary turfs, fixing a good variety of bugs relating to
+      them
+  - rscadd: Adds Shuttle Platforms for purchasing at the Shuttle Purchase computer.
+      They're empty shuttles used for "Build your own shuttle" purposes. There's several
+      variants of them and they come with supplies
+  - bugfix: MS Vulture now has the proper dock direction
+  Azarak, baystation:
+  - rscadd: Adds more wall signs (Deck signs, new signs, lots of small variants too)
+  - imageadd: More wall sign sprites.
+  CypressBz:
+  - rscadd: Adds some new concrete walls!
+  rhodochrositech:
+  - rscadd: Hyper Reality Visor FoxCat Armor
+  - imageadd: added all iconography and images for the armor
+  - code_imp: changes chronosuit's teleportation to have a checker if it's something
+      other than the chronosuit, to avoid dropping items.
+2021-07-03:
+  Azarak:
+  - bugfix: Fixes shuttles no longer being able to dock on planetary turfs
+  - bugfix: Possibly fixes issues with day/night and thunder overlays sticking, making
+      the outdoors areas fullbright
+  - code_imp: made day/night subsystem run less often and early return if there wasn't
+      anything to update
+  - qol: Day/night blend now has a smoother (bigger) transition. It's edges are now
+      circular instead of box shaped too
+  - bugfix: Fixes shuttles forcing outdoor areas to build a day/night blend
+  - bugfix: Fixes mining drills being left behind by shuttles
+  - balance: Weather now occurs ~33% less frequently
+  - bugfix: Fixes bandaged limbs being able to be bandaged again, and small examine
+      fix regarding fully ruined bandages
+  rhodochrositech:
+  - rscadd: Added the Supercruiser Aggregeddon, the larger, more equipped lander/cruiser
+      dedicated weapons platform ship.
+  - rscadd: Added the Supercruiser Mezzeriah, a lighter and more agile ship with dual
+      silos. Not designed for landing, and is in designed to be a moderate strike
+      craft.
+2021-07-04:
+  Azarak:
+  - bugfix: You will now be able to excavate rock turfs properly
+  - rscadd: Overmap shuttles will now properly respect velocity to animate parallax
+  - bugfix: Fixes parallax oddities.
+  - bugfix: Client's parallax is now updated immediately when an overmap object changes
+      its movement state
+  - rscadd: Increased flora density on lush planets by ~40%
+  - bugfix: Fixes parallax runtime
+  - balance: All flora now has 40 integrity (from 150), with the exceptions of trees
+      and rocks
+  - bugfix: Fixes and clarifies the admin debug ore scanner
+  - code_imp: Fixes bad code in the trader datum
+  CypressBz:
+  - rscdel: removes clownplanet.dmnm and all references to it in the code
+  - rscdel: removes originalcontent.dmm and all references to it in the code
+  - rscdel: removes shuttlerelic.dmm and all references to it in the code
+  - rscdel: removes lavaland_biodome_clown_planet.dmm and all references to it in
+      the code
+  FedTheCat:
+  - rscadd: Adds Cargo Shorts
+  - rscadd: Adds Tri Shirt
+  MissFox0810:
+  - qol: Bearcat changes, read the pr
+  Owai-Seek:
+  - qol: Food is significantly faster to craft.
+  - rscadd: Basic Mining Kit
+2021-07-05:
+  Azarak:
+  - rscadd: Added engine effects to shuttle engines - fire plume and looping sound
+  - rscadd: Bearcat now has fire warnings around the engines
+  - bugfix: Fixed nulls in managed_overlays
+  CypressBz:
+  - rscadd: Many new decorations to many ruins.
+  - rscadd: many more loot spawns to many ruins
+  - rscadd: filth and rust to many maps, to make them look lived in, and ruinous.
+  - rscadd: more randomization on certain things like vending machines and other interactables
+  - rscadd: obstacles and things to extend dungeon diving slightly in some of the
+      high loot ruins
+  - rscdel: outdated looking decor in places
+  - rscdel: reduces some maps size, by condensing them, or removing edge fluff
+  - balance: adds more space cash where it seems logical, as well as plenty of new
+      loot spawners
+  FedTheCat:
+  - code_imp: Changed req access to null.
+2021-07-06:
+  /tg/station:
+  - rscadd: Neon carpets exists. Bug your local chemist or quartermaster for a supply.
+  - code_imp: Decals support user-defined planes and some forms of smoothing.
+  Azarak:
+  - rscadd: Changes some leftover names of traders
+  - bugfix: Fixes space turfs in abandoned factory ruin
+  - bugfix: Digsite fix and clarification
+  - bugfix: Fixes light overlays on multi z openspace
+  - bugfix: Planetary turfs inherit a proper baseturf now
+  rhodochrositech:
+  - rscadd: Adds new trader, the Farming Apprentice, who sells foods (Wheat, Corn)
+      and livestock (Chickies, Cows, Goats)
+  - rscadd: Adds a new trader, the Atmospheric trader, who sells internal items (Plasmaman,
+      Vox, and tiny blue atmos can internals)
+  - rscadd: Adds a mining conscription kit to the mineral buyer to have access to
+      equipment
+  - rscadd: Adds a budget insul for over half the price of a vendor insul, and grey
+      bull (Shock Protection) to the Pharmacy
+2021-07-08:
+  Avunia Takiya:
+  - qol: Medicine Allergy Quirk now has insulin, spaceacillin, sal-glucose solution
+      and coagulant in their blacklist - no more allergies from those
+  - balance: Medicine Allergy Quirk only gives 4 points now
+  - rscadd: Re-added Extreme Medicine Allergy
+  - balance: Extreme Medicine Allergy now has sal-glucose and insulin blacklisted
+  Azarak:
+  - rscadd: Added roofs to shuttles
+  - code_imp: Multi-z backend and functionalities
+  - rscadd: Traders now can have a limited amount of "stock" they'll purchase. If
+      they run out, it'll rotate (possibly into the same thing)
+  - rscadd: Traders can now purchase reagents
+  - rscadd: Medical trader may now be interested in a reagent of white variety
+  - balance: Medical trader will now purchase a limited amount of organs
+  FedTheCat:
+  - rscadd: Added the Leopard Tail to the tails menu for certain species.
+2021-07-09:
+  /tg/station:
+  - rscadd: Ported patches from /tg/station, from 2021-06-11 until 2021-06-15. See
+      https://github.com/hrzntal/horizon/pull/332 for more details.
+  Azarak:
+  - rscadd: Fireplaces can now be crafted with 15 sandstone bricks (be mindful of
+      direction)
+  - qol: Fireplaces now burn 10 times longer
+  - rscadd: Wrench can be used in setting/repairing bone surgery as a ghetto tool,
+      it'll be very ineffective though
+  - balance: Coins no longer have any force, and wont hurt anyone when hurled
+  - bugfix: Jumpsuits and suits now properly hide/show your privates, based off their
+      coverage.
+  - bugfix: When you want your privates exposed, not even underwear will block them
+  - rscadd: RnD design for Trade Pad, Trade Console, Transporter, Mining Laser, Shield
+      Generator & Excavation gear. See https://github.com/hrzntal/horizon/pull/395
+      for details.
+  - rscadd: Mining Laser can now be rotated
+  - bugfix: Fixed a couple minor bugs regarding preferences
+  - code_imp: Backend for bodytype restrictions have been introduced for hairstyles,
+      underwear, markings and mutant parts
+  Owai-Seek:
+  - code_imp: Organized the buy/sell goods list used with traders.
+2021-07-10:
+  Azarak:
+  - bugfix: Fixes caltrops not telling you what you stepped on
+  - rscadd: Climbable element now has the functionality of climbing over things
+  - bugfix: Fixed climbing over railings
+  - rscadd: Added plated catwalks. You can craft them with iron rods
+  - rscadd: Added footstep override element. Lattices, catwalks and industrial lifts
+      use this to override the footstep into a metallic one
+  - rscadd: Moved undertile pipes, cables and disposal pipes to floor plane, disabling
+      their ambient occlusion
+  - bugfix: Crawling sound now can actually be heard
+  - qol: Lowers ship ambience volume
+  - bugfix: Fixes runechat calculating an improper amount of lines and not displaying
+      the top line
+  - bugfix: turf transparency properly not updating when a transparent turf was built
+      over
+  - balance: Lowers margin from traders from 30% to 15%, and price variance to 20%
+      from 25%
+  - bugfix: Overmap hard del and logic fixes
+  Owai-Seek:
+  - rscadd: Food traders will buy select goods.
+  - rscadd: Atmos traders now carry a space suit.
+  - balance: Adjusted multiple trader prices.
